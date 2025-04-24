@@ -11,7 +11,6 @@ async function bootstrap() {
     .setTitle('TAYA')
     .setDescription('API Service')
     .setVersion('1.0')
-    .addTag('taya')
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   const document = SwaggerModule.setup('api', app, documentFactory);
