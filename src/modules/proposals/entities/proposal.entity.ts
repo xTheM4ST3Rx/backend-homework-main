@@ -1,4 +1,11 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 import { User } from '../../users/entities/user.entity';
 import { Customer } from '../../customers/entities/customer.entity';
 
@@ -30,9 +37,9 @@ export class Proposal {
   })
   status: ProposalStatus;
 
-  @Column({ type: 'datetime' })
+  @CreateDateColumn({ type: 'datetime' })
   createdAt: Date;
 
-  @Column({ type: 'datetime' })
+  @UpdateDateColumn({ type: 'datetime' })
   updatedAt: Date;
 }

@@ -2,10 +2,12 @@ import { User } from '../../users/entities/user.entity';
 import { Proposal } from '../../proposals/entities/proposal.entity';
 import {
   Column,
+  CreateDateColumn,
   Entity,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 
 @Entity({ name: 'customers' })
@@ -25,9 +27,9 @@ export class Customer {
   @Column({ nullable: false, type: 'varchar', length: 200 })
   cpf: string;
 
-  @Column({ type: 'datetime' })
+  @CreateDateColumn({ type: 'datetime' })
   createdAt: Date;
 
-  @Column({ type: 'datetime' })
+  @UpdateDateColumn({ type: 'datetime' })
   updatedAt: Date;
 }

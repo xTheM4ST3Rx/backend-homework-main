@@ -12,8 +12,8 @@ async function bootstrap() {
     .setDescription('API Service')
     .setVersion('1.0')
     .build();
-  const documentFactory = () => SwaggerModule.createDocument(app, config);
-  const document = SwaggerModule.setup('api', app, documentFactory);
+
+  const document = SwaggerModule.createDocument(app, config);
 
   //DOCS - SCALAR
   app.use(
@@ -24,6 +24,8 @@ async function bootstrap() {
       },
     }),
   );
+
+  SwaggerModule.setup('api', app, document);
 
   await app.listen(3005, () => {
     console.log('-----------------------');

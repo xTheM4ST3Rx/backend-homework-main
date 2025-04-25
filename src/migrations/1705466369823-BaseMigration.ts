@@ -69,7 +69,7 @@ export class BaseMigration1705466369823 implements MigrationInterface {
 
     for (const user of users) {
       await queryRunner.query(
-        `INSERT INTO users (name, balance, "createdAt", "updatedAt") VALUES ('${user.name}', ${user.balance}, '${user.createdAt}', '${user.updatedAt}')`,
+        `INSERT INTO users (name, balance, "createdAt", "updatedAt") VALUES ('${user.name}', ${user.balance}, '${user.createdAt.toISOString()}', '${user.updatedAt.toISOString()}')`,
       );
     }
 
@@ -183,7 +183,7 @@ export class BaseMigration1705466369823 implements MigrationInterface {
 
     for (const customer of customers) {
       await queryRunner.query(
-        `INSERT INTO customers ("userCreatorId", name, cpf, "createdAt", "updatedAt") VALUES ('${customer.userCreatorId}', '${customer.name}', '${customer.cpf}', '${customer.createdAt}', '${customer.updatedAt}')`,
+        `INSERT INTO customers ("userCreatorId", name, cpf, "createdAt", "updatedAt") VALUES ('${customer.userCreatorId}', '${customer.name}', '${customer.cpf}', '${customer.createdAt.toISOString()}', '${customer.updatedAt.toISOString()}')`,
       );
     }
 
@@ -312,7 +312,7 @@ export class BaseMigration1705466369823 implements MigrationInterface {
 
     for (const proposal of proposals) {
       await queryRunner.query(
-        `INSERT INTO proposals ("userCreatorId", "customerId", status, profit, "createdAt", "updatedAt") VALUES ('${proposal.userCreatorId}', '${proposal.customerId}', '${proposal.status}', ${proposal.profit}, '${proposal.createdAt}', '${proposal.updatedAt}')`,
+        `INSERT INTO proposals ("userCreatorId", "customerId", status, profit, "createdAt", "updatedAt") VALUES ('${proposal.userCreatorId}', '${proposal.customerId}', '${proposal.status}', ${proposal.profit}, '${proposal.createdAt.toISOString()}', '${proposal.updatedAt.toISOString()}')`,
       );
     }
   }

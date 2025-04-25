@@ -6,6 +6,7 @@ import { UserMiddleware } from './middlewares/get-user-middleware';
 import { UsersModule } from './modules/users/users.module';
 import { ProposalsModule } from './modules/proposals/proposals.module';
 import { CustomersModule } from './modules/customers/customers.module';
+import { AdminModule } from './modules/admin/admin.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { CustomersModule } from './modules/customers/customers.module';
     UsersModule,
     ProposalsModule,
     CustomersModule,
+    AdminModule,
   ],
 })
 export class AppModule implements NestModule {
@@ -20,11 +22,3 @@ export class AppModule implements NestModule {
     consumer.apply(UserMiddleware).forRoutes('*'); // Apply it for all routes or specify routes
   }
 }
-
-// @Get('/proposals/:id')
-// async getProposalById(
-//   @Param('id') proposalId: number,
-//   @Req() req: { user: User },
-// ): Promise<Proposal> {
-//   return await this.proposalRepository.findOne({ where: { id: proposalId } });
-// }
