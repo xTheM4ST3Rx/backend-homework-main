@@ -9,8 +9,6 @@ import {
   Req,
 } from '@nestjs/common';
 import { ProposalsService } from './proposals.service';
-import { CreateProposalDto } from './dto/create-proposal.dto';
-import { UpdateProposalDto } from './dto/update-proposal.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { User } from '../users/entities/user.entity';
 
