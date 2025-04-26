@@ -3,15 +3,14 @@
 
   "builds": [
     {
-      "src": "dist/main.js",
+      "src": "src/lambda.ts",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "dist/main.js",
-      "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"]
+      "dest": "src/lambda.ts"
     }
   ]
 }
