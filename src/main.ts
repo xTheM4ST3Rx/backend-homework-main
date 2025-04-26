@@ -3,7 +3,7 @@ import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { apiReference } from '@scalar/nestjs-api-reference';
 
-export async function createNestServer() {
+export default async function createNestServer() {
   const app = await NestFactory.create(AppModule);
   app.enableCors({ origin: '*' });
 

@@ -27,9 +27,13 @@ export class Customer {
   @Column({ nullable: false, type: 'varchar', length: 200 })
   cpf: string;
 
-  @CreateDateColumn({ type: 'datetime' })
+  @CreateDateColumn({
+    type: process.env.DB_TYPE === 'postgres' ? 'timestamp' : 'datetime',
+  })
   createdAt: Date;
 
-  @UpdateDateColumn({ type: 'datetime' })
+  @UpdateDateColumn({
+    type: process.env.DB_TYPE === 'postgres' ? 'timestamp' : 'datetime',
+  })
   updatedAt: Date;
 }
