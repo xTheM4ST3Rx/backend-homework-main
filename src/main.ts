@@ -40,7 +40,9 @@ if (require.main === module) {
     //DOCS - SWAGGER
     const config = new DocumentBuilder()
       .setTitle('TAYA')
-      .setDescription('API Service')
+      .setDescription(
+        'API Taya<br><br>Legenda:<br>🌐 - Público<br>🔑 - Requer autenticação (user_id)<br>🔐 - Requer nível administrador',
+      )
       .setVersion('1.0')
       .build();
 
@@ -57,12 +59,6 @@ if (require.main === module) {
     );
 
     SwaggerModule.setup('api', app, document);
-
-    //TESTE - ROOT
-    const expressApp = app.getHttpAdapter().getInstance();
-    expressApp.get('/', (req, res) => {
-      res.send('👁️');
-    });
 
     await app.listen(3005, () => {
       console.log('-----------------------');
