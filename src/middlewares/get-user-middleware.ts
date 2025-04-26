@@ -23,6 +23,8 @@ export class UserMiddleware implements NestMiddleware {
     const user = await this.userRepository.findOneBy({ id: Number(userId) });
     if (user) {
       (req as any).user = user;
+    } else {
+      throw new UnauthorizedException();
     }
     next();
   }

@@ -24,26 +24,25 @@ export class ProposalsController {
 
   @Get()
   @ApiOperation({ summary: '🔑 Listar propostas' })
-  findAll() {
-    return this.proposalsService.findAll();
+  findAll(@Req() req: { user: User }) {
+    return this.proposalsService.findAll(req.user.id);
   }
 
   @Get('refused')
   @ApiOperation({ summary: '🔑 Listar recusadas' })
-  findAllRefused() {
-    return this.proposalsService.findAllRefused();
+  findAllRefused(@Req() req: { user: User }) {
+    return this.proposalsService.findAllRefused(req.user.id);
   }
 
   @Post('refused/:id/aprove')
   @ApiOperation({ summary: '🔑 Aprovar pendente' })
   aproveProposal(@Param('id') id: number, @Req() req: { user: User }) {
-    console.log(id);
     return this.proposalsService.aproveProposal(id, req.user.id);
   }
 
   @Get(':id')
   @ApiOperation({ summary: '🔑 Buscar proposta por ID' })
   findOne(@Param('id') id: number, @Req() req: { user: User }) {
-    return this.proposalsService.findOne(id);
+    return this.proposalsService.findOne(id, req.user.id);
   }
 }
