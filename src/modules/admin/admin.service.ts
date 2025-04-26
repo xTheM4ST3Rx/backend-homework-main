@@ -33,6 +33,9 @@ export class AdminService {
 
   //Retorna os users que possuem o maior profit de propostas em sucesso vinculado.
   async findBestUsers(start: Date, end: Date) {
+    const startIso = new Date(start).toISOString();
+    const endIso = new Date(end).toISOString();
+
     return await this.userRepository
       .createQueryBuilder('user')
       .innerJoin(
@@ -41,8 +44,8 @@ export class AdminService {
         `proposal.status = :status AND proposal.createdAt BETWEEN :start AND :end`,
         {
           status: ProposalStatus.SUCCESSFUL,
-          start,
-          end,
+          start: startIso,
+          end: endIso,
         },
       )
       .select('user.id', 'userId')
