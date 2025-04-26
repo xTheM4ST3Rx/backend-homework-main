@@ -58,6 +58,12 @@ if (require.main === module) {
 
     SwaggerModule.setup('api', app, document);
 
+    //TESTE - ROOT
+    const expressApp = app.getHttpAdapter().getInstance();
+    expressApp.get('/', (req, res) => {
+      res.send('👁️');
+    });
+
     await app.listen(3005, () => {
       console.log('-----------------------');
       console.log('🎉 - Servidor Online !');
